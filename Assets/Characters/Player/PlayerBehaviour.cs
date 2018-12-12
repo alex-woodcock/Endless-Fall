@@ -6,8 +6,14 @@ public class PlayerBehaviour : MonoBehaviour {
     public Animator anim;
     public Rigidbody2D rb2d;
     public float yOffset=0f;
-    float dabFrames=0;
-    bool canDab = true;
+    public float dabFrames=0;
+    public bool canDab = true;
+
+    public void SetAnim(string animName)
+    {
+        anim.Play(animName);
+    }
+
     // Use this for initialization
     void Start ()
     {
@@ -27,14 +33,6 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             dabFrames--;
             ///TODO INVINCIBILITY DURING THIS MAN ADD IT WHEN YOU ADD DAMAGE
-        }
-        else if (Input.GetKey(KeyCode.Space) && canDab)//tap screen to use ability
-        {
-            anim.Play("Player-Dab");
-            dabFrames = 30;
-            //GameObject.Find("cutIn-Yosuke").GetComponent(typeof(cutInMove)).CutIn(120, -10, 0, -2f);
-            gameObject.cutIn-Yosuke<cutInMove>().CutIn(120, -10, 0, -2f);
-
         }
         else
         {
