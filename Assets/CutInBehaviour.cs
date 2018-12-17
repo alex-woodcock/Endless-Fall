@@ -77,7 +77,7 @@ public class CutInBehaviour : MonoBehaviour {
         m_SpriteRenderer.color = color;
         if (Input.GetKey(KeyCode.Space)/* && player.canDab*/)//tap screen to use ability
         {
-            GameObject.Find("Persona").transform.position = new Vector2(GameObject.Find("Player").transform.position.x-0.2, GameObject.Find("Player").transform.position.y - 0.2);
+            GameObject.Find("Persona").transform.position = new Vector2(GameObject.Find("Player").transform.position.x-0.2f, GameObject.Find("Player").transform.position.y - 0.2f);
             //////////////////////////////////////////////////////////////////////////////////////////////////player.SetAnim("Player-Dab");
             player.SetAnim("ultimate");
             player.dabFrames = 120;
