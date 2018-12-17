@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cutInMove : MonoBehaviour {
+public class CutInBehaviour : MonoBehaviour {
     public int framesActive = 0;
     public float xPosition = 0f;
     public float yPosition = 2f;
     public float i = -2f;
     SpriteRenderer m_SpriteRenderer;
-    public Color color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+    public Color color = new Color(1f, 1f, 1f, 0.5f);
     private PlayerBehaviour player;
     /*
     int framesActive = 120;
@@ -73,16 +73,19 @@ public class cutInMove : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         m_SpriteRenderer.color = color;
         if (Input.GetKey(KeyCode.Space)/* && player.canDab*/)//tap screen to use ability
         {
-            player.SetAnim("Player-Dab");
-            player.dabFrames = 30;
+            GameObject.Find("Persona").transform.position = new Vector2(GameObject.Find("Player").transform.position.x-0.2, GameObject.Find("Player").transform.position.y - 0.2);
+            //////////////////////////////////////////////////////////////////////////////////////////////////player.SetAnim("Player-Dab");
+            player.SetAnim("ultimate");
+            player.dabFrames = 120;
             //GameObject.Find("cutIn-Yosuke").GetComponent(typeof(cutInMove)).CutIn(120, -10, 0, -2f);
             //gameObject.cutIn-Yosuke<cutInMove>().CutIn(120, -10, 0, -2f);
             ///transform.position = new Vector2(xPosition, yPosition);
-            transform.position = GameObject.Find("Player").transform.position;
+            //transform.position = GameObject.Find("Player").transform.position;
+            transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y+2, -1);
             //transform.Translate(xPosition, yPosition, -9);
             framesActive = 60;
             color.a = 0.0f;

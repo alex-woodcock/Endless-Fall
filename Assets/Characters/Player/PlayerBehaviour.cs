@@ -32,10 +32,13 @@ public class PlayerBehaviour : MonoBehaviour {
         if (dabFrames > 0)
         {
             dabFrames--;
+            //default .6, .6, 1
+            transform.localScale = new Vector3(0.7f, 0.7f, 1);
             ///TODO INVINCIBILITY DURING THIS MAN ADD IT WHEN YOU ADD DAMAGE
         }
         else
         {
+            transform.localScale = new Vector3(0.6f, 0.6f, 1);
             anim.Play("Yosuke-Fallspin");
             //////////////////////////////////still in curly bracket
             if (Input.GetKey(KeyCode.W))

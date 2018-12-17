@@ -10,7 +10,7 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         //Debug.Log(GameObject.Find("Player").transform.position);
         //Debug.Log(this.transform.position.x);
         yOffset= GameObject.Find("Player").GetComponent<PlayerBehaviour>().yOffset;
