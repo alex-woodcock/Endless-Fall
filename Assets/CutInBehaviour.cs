@@ -8,9 +8,15 @@ public class CutInBehaviour : MonoBehaviour {
     public float xPosition = 0f;
     public float yPosition = 2f;
     public float i = -2f;
+    bool waited = true;
     SpriteRenderer m_SpriteRenderer;
     public Color color = new Color(1f, 1f, 1f, 0.5f);
     private PlayerBehaviour player;
+    //persona animator starts
+    public GameObject PersonaBehaviour;
+    Animator personaAnim;
+    //and ends
+
     /*
     int framesActive = 120;
     int xPosition = -10;
@@ -25,43 +31,11 @@ public class CutInBehaviour : MonoBehaviour {
             yield return null;
         }
     }
-    /*
-    public void CutIn(int framesActive, int xPosition, int yPosition, float i)
-    {
-        //CutIn.SetActive(true);
 
-        while (framesActive > 0)
-        {
-            //Wait(1);
-            StartCoroutine(Wait(1));
-            //
-            if (i * i / 10f > 0.05f)
-            {
-                transform.Translate(i * i / 10f, 0, 0);
-            }
-            //
-            if (i<-1f)
-            {
-                transform.Translate(0.1f, 0, 0);
-            }
-            else if (i<1f)
-            {
-                transform.Translate(0.02f, 0, 0);
-            }
-            else
-            {
-                transform.Translate(0.1f, 0, 0);
-            }
-
-            framesActive--;
-            i = i + 0.05f;
-        }
-
-    }
-    */
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
+        personaAnim = GameObject.Find("Persona").GetComponent<Animator>();
     }
     // Use this for initialization
     void Start () {
@@ -77,10 +51,12 @@ public class CutInBehaviour : MonoBehaviour {
         m_SpriteRenderer.color = color;
         if (Input.GetKey(KeyCode.Space)/* && player.canDab*/)//tap screen to use ability
         {
-            GameObject.Find("Persona").transform.position = new Vector2(GameObject.Find("Player").transform.position.x-0.2f, GameObject.Find("Player").transform.position.y - 0.2f);
+            
+            personaAnim.Play("jiraiyaSmoke");
             //////////////////////////////////////////////////////////////////////////////////////////////////player.SetAnim("Player-Dab");
-            player.SetAnim("ultimate");
-            player.dabFrames = 120;
+            waited = false;
+            //
+            player.dabFrames = 90;
             //GameObject.Find("cutIn-Yosuke").GetComponent(typeof(cutInMove)).CutIn(120, -10, 0, -2f);
             //gameObject.cutIn-Yosuke<cutInMove>().CutIn(120, -10, 0, -2f);
             ///transform.position = new Vector2(xPosition, yPosition);
@@ -94,28 +70,23 @@ public class CutInBehaviour : MonoBehaviour {
         ////THIS IS SUPER BUDGET dont look pls
         if (framesActive>0)
         {
-            /*
-            if (i < -1.5f)
+            if (framesActive<51)
             {
-                transform.Translate(0.3f, 0, 0);
+                if (waited == false)
+                {
+                    player.SetAnim("ultimate");
+                    waited = true;
+                }
             }
-            else if (i < 1.5f)
+            if (framesActive>30)
             {
-                transform.Translate(0.06f, 0, 0);
+                GameObject.Find("Persona").transform.position = new Vector2(GameObject.Find("Player").transform.position.x + 2f, GameObject.Find("Player").transform.position.y - 1f);
+                
             }
             else
             {
-                transform.Translate(0.3f, 0, 0);
+                GameObject.Find("Persona").transform.position = new Vector2(100, 100);
             }
-
-            framesActive--;
-            if (framesActive<80)
-            {
-                transform.position = new Vector2(0, 20);
-            }
-            i = i + 0.05f;
-            */
-            
             if (framesActive>40)
             {
                 color.a = color.a + 0.16f;

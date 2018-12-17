@@ -13,4 +13,14 @@ public class PersonaBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void StartAnim()
+    {
+
+    }
+
+    public void StopAnim()
+    {
+
+    }
 }

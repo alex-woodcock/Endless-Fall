@@ -19,6 +19,7 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         anim = GetComponent<Animator>();
         anim.Play("Yosuke-Fallspin");
+        
     }
 	
 	// Update is called once per frame
